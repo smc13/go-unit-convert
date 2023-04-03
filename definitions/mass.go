@@ -69,3 +69,47 @@ var MetricMassSystem = SystemSet{
 		&Tonne,
 	},
 }
+
+// imperial
+
+var imperialMassSystem = System{
+	Name:    IMPERIAL_SYSTEM_NAME,
+	Measure: MASS_MEASURE,
+	Ratio:   453.592,
+}
+
+var Ounce = Unit{
+	Name: UnitName{
+		Singular: "Ounce",
+		Plural:   "Ounces",
+	},
+	Abbr:     "oz",
+	ToAnchor: 1 / 16,
+}
+
+var Pound = Unit{
+	Name: UnitName{
+		Singular: "Pound",
+		Plural:   "Pounds",
+	},
+	Abbr:     "lb",
+	ToAnchor: 1,
+}
+
+var Ton = Unit{
+	Name: UnitName{
+		Singular: "Ton",
+		Plural:   "Tons",
+	},
+	Abbr:     "t",
+	ToAnchor: 2000,
+}
+
+var ImperialMassSystem = SystemSet{
+	System: &imperialMassSystem,
+	Units: []*Unit{
+		&Ounce,
+		&Pound,
+		&Ton,
+	},
+}
