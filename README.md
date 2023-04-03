@@ -6,7 +6,7 @@ go-unit-convert is a Go package that provides functionality for converting units
 To use go-unit-convert, you need to have Go installed on your system. Once you have Go installed, you can install the package using the following command:
 
 ```sh
-go get github.com/your-username/go-unit-convert
+go get github.com/smc13/go-unit-convert
 ```
 
 ## Usage
@@ -16,8 +16,8 @@ Here's an example of how you can use NewValue to create a value representing 300
 
 ```golang
 import (
-    "github.com/your-username/go-unit-convert/definitions"
-    "github.com/your-username/go-unit-convert"
+    "github.com/smc13/go-unit-convert/definitions"
+    "github.com/smc13/go-unit-convert"
 )
 
 value := unitconvert.NewValue(3000, &definitions.Meter)
