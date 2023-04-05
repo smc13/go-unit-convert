@@ -68,16 +68,13 @@ var Kilometer = Unit{
 	ToAnchor: 1e3,
 }
 
-var MetricLengths = SystemSet{
-	System: &metricLengthSystem,
-	Units: []*Unit{
-		&Nanometer,
-		&Micrometer,
-		&Millimeter,
-		&Centimeter,
-		&Meter,
-		&Kilometer,
-	},
+var MetricLengths = UnitSet{
+	Nanometer,
+	Micrometer,
+	Millimeter,
+	Centimeter,
+	Meter,
+	Kilometer,
 }
 
 // imperial units
@@ -148,14 +145,11 @@ var Mile = Unit{
 	ToAnchor: 5280,
 }
 
-var ImperialLengths = SystemSet{
-	System: &imperialLengthSystem,
-	Units: []*Unit{
-		&Inch,
-		&Yard,
-		&UsSurveyFoot,
-		&Foot,
-		&Fathom,
-		&Mile,
-	},
+var ImperialLengths = UnitSet{
+	Inch,
+	Yard,
+	UsSurveyFoot,
+	Foot,
+	Fathom,
+	Mile,
 }

@@ -12,3 +12,5 @@ type Unit struct {
 	ToAnchor    float64
 	AnchorShift float64
 }
+
+type UnitSet []Unit

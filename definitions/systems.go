@@ -25,8 +25,3 @@ func (s *System) Transform(val float64) float64 {
 
 	return val
 }
-
-type SystemSet struct {
-	System *System
-	Units  []*Unit
-}

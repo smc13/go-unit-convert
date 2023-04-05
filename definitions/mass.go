@@ -59,15 +59,12 @@ var Tonne = Unit{
 	ToAnchor: 1000000,
 }
 
-var MetricMassSystem = SystemSet{
-	System: &metricMassSystem,
-	Units: []*Unit{
-		&Microgram,
-		&Milligram,
-		&Gram,
-		&Kilogram,
-		&Tonne,
-	},
+var MetricMassSystem = UnitSet{
+	Microgram,
+	Milligram,
+	Gram,
+	Kilogram,
+	Tonne,
 }
 
 // imperial
@@ -105,11 +102,8 @@ var Ton = Unit{
 	ToAnchor: 2000,
 }
 
-var ImperialMassSystem = SystemSet{
-	System: &imperialMassSystem,
-	Units: []*Unit{
-		&Ounce,
-		&Pound,
-		&Ton,
-	},
+var ImperialMassSystem = UnitSet{
+	Ounce,
+	Pound,
+	Ton,
 }

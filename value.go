@@ -7,7 +7,7 @@ import (
 	"github.com/smc13/go-unit-convert/definitions"
 )
 
-func NewValue(value float64, unit *definitions.Unit) *Value {
+func NewValue(value float64, unit definitions.Unit) *Value {
 	return &Value{
 		unit:  unit,
 		value: value,
@@ -15,11 +15,11 @@ func NewValue(value float64, unit *definitions.Unit) *Value {
 }
 
 type Value struct {
-	unit  *definitions.Unit
+	unit  definitions.Unit
 	value float64
 }
 
-func (v *Value) Unit() *definitions.Unit {
+func (v *Value) Unit() definitions.Unit {
 	return v.unit
 }
 
@@ -45,7 +45,7 @@ func (v *Value) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (v *Value) To(unit *definitions.Unit) (*Value, error) {
+func (v *Value) To(unit definitions.Unit) (*Value, error) {
 	if v.unit == unit {
 		return v, nil
 	}
@@ -77,7 +77,7 @@ func (v *Value) To(unit *definitions.Unit) (*Value, error) {
 	}, nil
 }
 
-func (v *Value) ToBest(set *definitions.SystemSet) (*Value, error) {
+func (v *Value) ToBest(set definitions.UnitSet) (*Value, error) {
 	isNegative := v.value < 0
 	cutoff := 1.0
 	if isNegative {
@@ -86,13 +86,10 @@ func (v *Value) ToBest(set *definitions.SystemSet) (*Value, error) {
 
 	var best *Value
 
-	for _, u := range set.Units {
+	for _, u := range set {
 		result, err := v.To(u)
-		if err != nil {
-			continue
-		}
 
-		if (isNegative && result.value > cutoff) || (!isNegative && result.value < cutoff) {
+		if err != nil && (isNegative && result.value > cutoff) || (!isNegative && result.value < cutoff) {
 			continue
 		}
 
@@ -102,7 +99,7 @@ func (v *Value) ToBest(set *definitions.SystemSet) (*Value, error) {
 	}
 
 	if best == nil {
-		return nil, fmt.Errorf("no units in set %s are compatible with %s", set.System.Name, v.unit.Name.Singular)
+		return nil, fmt.Errorf("no units in the set are compatible with %s", v.unit.Name.Singular)
 	}
 
 	return best, nil
